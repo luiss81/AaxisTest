@@ -1,0 +1,60 @@
+version:  '2.4'
+
+services:
+    postgres:
+        image: postgres:15.1
+        container_name: 'test_postgres15'
+        restart: always
+        environment:
+            POSTGRES_DB: aaxis_test
+            POSTGRES_USER: aaxis_user
+            POSTGRES_PASSWORD: Aaxis1234
+        volumes:
+            - './docker/data/postgresql/:/var/lib/postgresql/data'
+        ports:
+            - '5432:5432'
+        networks:
+            - default_network
+
+    php:
+        build:
+            context: docker/config/php
+            dockerfile: Dockerfile
+            network: host
+            args:
+                ENV: dev # choose environment (dev/test/prod)
+                TIMEZONE: America/Argentina/Buenos_Aires # change according to your needs
+        container_name: 'test_php82'
+        expose:
+            - '9000'
+        restart: on-failure
+        env_file:
+            - .env # ! create this file ! - choose environment (dev/test/prod) and copy correct template .dist file
+        depends_on:
+            - postgres
+        volumes:
+            - './:/var/www/html:cached'
+        networks:
+            - default_network
+
+    nginx:
+        build: docker/config/nginx
+        container_name: 'test_nginx'
+        restart: on-failure
+        depends_on:
+            - postgres
+            - php
+        volumes:
+            - './:/var/www/html:cached'
+            - './logs/nginx:/var/log/nginx'
+        ports:
+            - '8088:80'
+        networks:
+            - default_network
+
+networks:
+    default_network:
+        driver: bridge
+        ipam:
+            config:
+                - subnet: 173.50.20.0/24

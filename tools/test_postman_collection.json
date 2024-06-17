@@ -1,0 +1,197 @@
+{
+	"info": {
+		"_postman_id": "f0f6cead-f16a-41e8-ab7a-301daa5d76e5",
+		"name": "Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4990458"
+	},
+	"item": [
+		{
+			"name": "GET ALL PRODUCTS",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8088/api/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE PRODUCTS",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"sku\": \"00001\",\n        \"product_name\": \"Producto 1\",\n        \"description\": \"Descripcion 1\"\n    },\n    {\n        \"sku\": \"00002\",\n        \"product_name\": \"Producto 2\",\n        \"description\": \"Descripcion 2\"\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8088/api/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE PRODUCTS",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"sku\": \"00001\",\n        \"product_name\": \"Producto 1\",\n        \"description\": \"Descripcion del prducto 1\"\n    },\n    {\n        \"sku\": \"00002\",\n        \"product_name\": \"Producto 2\",\n        \"description\": \"Descripcion del producto 2\"\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8088/api/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LOGIN CHECK",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"lsosa\",\n    \"password\": \"1234\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8088/api/login_check",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"api",
+						"login_check"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "REGISTER USER",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"lsosa\",\n    \"password\": \"1234\",\n    \"email\": \"luiss81@gmail.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8088/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3MTg1ODU1MTcsImV4cCI6MTcxODU4OTExNywicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoibHNvc2EifQ.Svfon_pzJ4tV5rFCRMDpTD3152Vzs7WcpsMOsuo6iAwWUpkUdRRogflE-7JsurPMTX48CR2REtiOsfHpaWwBDg6xMxG7RuyrmFXuFrcVcuBNi0UwQi0zjtByCc1sG4YoVGfcJQ_3n0QBJFIFnxsTbjMszqbU4ROX9cSBW7qD3eMPOzMjD3X1TR0vvs40SvE5c3si79HSFg7LMUX_8RYYqB8vZMsDETqrXcyqoHVgZhudaBiDP8zh8RzX6T6q1A-dGnc0Is_rDPA4r-ys9Pne0-cuOd3BGnNCBNMThK5WUe3FpCqNko_GjNGod9cSn944mtIyp3vg38g5omuHgX18bg",
+			"type": "string"
+		}
+	]
+}
