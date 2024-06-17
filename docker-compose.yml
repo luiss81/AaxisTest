@@ -29,7 +29,7 @@ services:
             - '9000'
         restart: on-failure
         env_file:
-            - .env # ! create this file ! - choose environment (dev/test/prod) and copy correct template .dist file
+            - docker/config/.env # ! create this file ! - choose environment (dev/test/prod) and copy correct template .dist file
         depends_on:
             - postgres
         volumes:

@@ -14,7 +14,7 @@ Tested on Linux (Ubuntu 22.04):
 # Usage
 
 1. Clone repository, `cd` inside.
-1. Create `.env` file in `/` directory according to your needs, or just copy template `.env.dist`
+1. Create `.env` file in `docker/config/` directory according to your needs, or just copy template `.env.dist`
 1. Review `docker-compose.yml` and change according to the comments inside. 
 1. Run:
 
@@ -51,6 +51,9 @@ To test this API, you can install Postman or use another Rest API client you lik
 4. In Edit->Variables section, put the content in the token variable
 5. Set Products in json format on CREATE PRODUCTS section to load products
 6. Set Products in json format on UPDATE PRODUCTS section to modify products
+
+### Troubleshooting
+If you get an error like "pg_logical/snapshots: Permission denied" you just have to finish executing docker-compose up (ctrl+c) and run it again
 
 # Links
 - https://www.postman.com/api-platform/api-client/
