@@ -1,9 +1,7 @@
 /.idea
 
 ###
-
 logs/*
-bin/*
 
 ###
 .phpunit
